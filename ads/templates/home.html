@@ -672,6 +672,11 @@ fetch('http://127.0.0.1:8000/ads/all/')
                 }
             }
             renderPizzaWheel() {
+                this.wheelCanvas.style.display = 'block';
+                this.slotMachine.style.display = 'none';
+                this.chipsWheel.style.display = 'none';
+                this.wheelPointer.style.display = 'block';
+                this.wheelCenter.style.display = 'block';
                 // Responsive canvas size
                 const size = Math.min(this.wheelCanvas.parentElement.offsetWidth, 400);
                 this.wheelCanvas.width = this.wheelCanvas.height = size;
@@ -777,6 +782,21 @@ fetch('http://127.0.0.1:8000/ads/all/')
                         ctx.fill();
                         ctx.restore();
                     }
+                    // Draw name on slice
+                    ctx.save();
+                    ctx.translate(centerX, centerY);
+                    ctx.rotate(start + sliceAngle / 2);
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.font = `bold ${Math.floor(size * 0.06)}px Poppins, Arial, sans-serif`;
+                    // Draw outline for contrast
+                    ctx.lineWidth = 6;
+                    ctx.strokeStyle = '#fff';
+                    ctx.strokeText(this.names[i], radius * 0.65, 0);
+                    // Draw main text
+                    ctx.fillStyle = '#222';
+                    ctx.fillText(this.names[i], radius * 0.65, 0);
+                    ctx.restore();
                 }
 
                 // Draw pointer (triangle at top)
@@ -826,9 +846,11 @@ fetch('http://127.0.0.1:8000/ads/all/')
                 this.isSpinning = true;
                 this.spinBtn.disabled = true;
                 if (this.selectedStyle === 'slot') {
-                    this.animateSlotMachine();
+                    const winner = this.names[Math.floor(Math.random() * this.names.length)];
+                    this.animateSlotMachine(winner);
                 } else if (this.selectedStyle === 'chips') {
-                    this.animateChipsWheel();
+                    const winner = this.names[Math.floor(Math.random() * this.names.length)];
+                    this.animateChipsWheel(winner);
                 } else {
                     this.animateSpin();
                 }
@@ -872,7 +894,7 @@ fetch('http://127.0.0.1:8000/ads/all/')
                 };
                 requestAnimationFrame(animate);
             }
-            animateSlotMachine() {
+            animateSlotMachine(winner) {
                 this.slotMachine.style.display = 'flex';
                 let names = this.names;
                 let i = 0, spins = 20;
