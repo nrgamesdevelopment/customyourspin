@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import Ad
+from django.http import HttpResponse
+import os
+from pathlib import Path
 
 # Create your views here.
 
@@ -29,3 +32,6 @@ def all_ads(request):
         for ad in ads
     ]
     return JsonResponse({'ads': data})
+
+def home(request):
+    return render(request, 'home.html')

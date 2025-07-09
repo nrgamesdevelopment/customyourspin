@@ -14,25 +14,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf import settings
-from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include
-from django.views.generic import TemplateView
-import os
-from django.http import HttpResponse
-
-# Serve home.html at root
-
-def home(request):
-    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'home.html'), encoding='utf-8') as f:
-        return HttpResponse(f.read())
+from django.urls import path
+from ads.views import home
 
 urlpatterns = [
-    path('', home, name='home'),
     path('admin/', admin.site.urls),
-    path('ads/', include('ads.urls')),  # For ad API
+    path('', home, name='home'),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
