@@ -316,9 +316,45 @@
             border-top: 40px solid #8B4513;
             z-index: 5;
         }
+        @media (max-width: 1200px) {
+            .main-container { max-width: 98vw; padding: 10px; }
+            .wheel-container { width: 90vw; height: 90vw; max-width: 400px; max-height: 400px; }
+        }
+        @media (max-width: 992px) {
+            .main-container { padding: 5px; }
+            .wheel-container { width: 80vw; height: 80vw; max-width: 350px; max-height: 350px; }
+            .header h1 { font-size: 1.3rem; }
+        }
         @media (max-width: 768px) {
-            .wheel-container { width: 300px; height: 300px; }
-            .header h1 { font-size: 1.5rem; }
+            .row { flex-direction: column !important; }
+            .col-lg-4, .col-lg-8, .col-md-4 { width: 100% !important; max-width: 100% !important; flex: 0 0 100% !important; }
+            .wheel-container { width: 95vw; height: 95vw; max-width: 300px; max-height: 300px; }
+            .slot-reel { min-width: 80px; max-width: 120px; font-size: 1.1rem; height: 90px; }
+            .btn, .btn-primary, .btn-success, .btn-danger, .btn-warning { font-size: 1rem; padding: 10px 0; }
+            .card { margin-bottom: 18px; }
+            .header h1 { font-size: 1.1rem; }
+            .site-logo { font-size: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .main-container { padding: 2px; }
+            .wheel-container { width: 99vw; height: 99vw; max-width: 220px; max-height: 220px; }
+            .slot-reel { min-width: 60px; max-width: 80px; font-size: 0.9rem; height: 60px; }
+            .btn, .btn-primary, .btn-success, .btn-danger, .btn-warning { font-size: 0.95rem; padding: 8px 0; }
+            .header h1 { font-size: 1rem; }
+            .site-logo { font-size: 1.1rem; }
+        }
+        .name-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .name-item:last-child { border-bottom: none; }
+        .remove-name {
+            margin-left: 10px;
+            padding: 2px 8px;
+            font-size: 1rem;
         }
     </style>
 </head>
