@@ -357,6 +357,139 @@
             font-size: 1rem;
         }
     </style>
+    <style>
+      html, body {
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', Arial, sans-serif;
+        background: linear-gradient(135deg, #7b7ce4 0%, #8e44ad 100%);
+      }
+      .ad-card {
+        display: inline-block;
+        background: rgba(255,255,255,0.08);
+        border-radius: 16px;
+        padding: 16px 12px 10px 12px;
+        min-width: 220px;
+        max-width: 220px;
+        text-align: center;
+        color: #222;
+        margin-bottom: 8px;
+        box-shadow: none;
+        margin-left: 8px;
+        margin-right: 8px;
+      }
+      .ad-card img {
+        max-width: 240px;
+        max-height: 160px;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        box-shadow: none;
+      }
+      .ad-card .ad-title {
+        font-weight: bold;
+        font-size: 1.25rem;
+        margin-bottom: 4px;
+        color: #fff;
+        text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+        word-break: break-word;
+      }
+      #ad-container-multi {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+      @media (max-width: 900px) {
+        .ad-card {
+          min-width: 45vw;
+          max-width: 90vw;
+          width: 90vw;
+          padding: 12px 4vw 8px 4vw;
+          margin-bottom: 16px;
+        }
+        .ad-card img {
+          max-width: 90vw;
+          max-height: 40vw;
+          width: 100%;
+          height: auto;
+        }
+        .ad-card .ad-title {
+          font-size: 1.1rem;
+        }
+        #ad-container-multi {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+      @media (max-width: 600px) {
+        .ad-card {
+          min-width: 90vw;
+          max-width: 95vw;
+          width: 90vw;
+          padding: 10px 2vw 8px 2vw;
+          margin-bottom: 16px;
+        }
+        .ad-card img {
+          max-width: 90vw;
+          max-height: 40vw;
+          width: 100%;
+          height: auto;
+        }
+        .ad-card .ad-title {
+          font-size: 1rem;
+        }
+        #ad-container-multi {
+          flex-direction: column;
+          align-items: center;
+        }
+        .main-content, .wheel-section, .settings-section {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+        body {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+      /* Wheel and controls responsiveness */
+      .wheel-section, .settings-section {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding: 0 12px;
+      }
+      @media (max-width: 600px) {
+        .wheel-section, .settings-section {
+          max-width: 100vw;
+          padding: 0 2vw;
+        }
+      }
+      .spin-btn, .reset-btn {
+        min-width: 120px;
+        font-size: 1.1rem;
+        padding: 12px 0;
+        border-radius: 8px;
+      }
+      @media (max-width: 600px) {
+        .spin-btn, .reset-btn {
+          min-width: 90vw;
+          font-size: 1rem;
+        }
+      }
+      /* Prevent horizontal scroll on all elements */
+      * {
+        box-sizing: border-box;
+      }
+    </style>
 </head>
 <body>
     <div class="main-container">
@@ -474,9 +607,10 @@
       justify-content: center;
     }
     .ad-card {
-      background: none;
-      border-radius: 0;
-      padding: 0;
+      display: inline-block;
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 16px 12px 10px 12px;
       min-width: 220px;
       max-width: 220px;
       text-align: center;
@@ -499,6 +633,33 @@
       margin-bottom: 4px;
       color: #fff;
       text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+    }
+    @media (max-width: 600px) {
+      .ad-card {
+        min-width: 90vw;
+        max-width: 95vw;
+        width: 90vw;
+        padding: 10px 4vw 8px 4vw;
+        margin-bottom: 16px;
+      }
+      .ad-card img {
+        max-width: 90vw;
+        max-height: 40vw;
+        width: 100%;
+        height: auto;
+      }
+      .ad-card .ad-title {
+        font-size: 1.1rem;
+      }
+      #ad-container-multi {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      body {
+        padding-left: 0;
+        padding-right: 0;
+      }
     }
     </style>
     <div style="text-align:center;font-size:1.3rem;font-weight:600;margin-top:24px;letter-spacing:1px;">Our Partners</div>
