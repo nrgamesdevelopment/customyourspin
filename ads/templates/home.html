@@ -468,7 +468,7 @@
     <div style="text-align:center;font-size:1.3rem;font-weight:600;margin-top:24px;letter-spacing:1px;">Our Partners</div>
     <div id="ad-container-multi"></div>
     <script>
-fetch('http://127.0.0.1:8000/ads/all/')
+fetch('/ads/all/')
   .then(response => response.json())
   .then(data => {
     if (data && data.ads && data.ads.length > 0) {
