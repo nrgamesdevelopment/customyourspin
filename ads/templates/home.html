@@ -127,11 +127,13 @@
         .btn:hover { filter: brightness(1.1); }
         .wheel-container {
             position: relative;
-            width: 400px;
-            height: 400px;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1/1;
             margin: 0 auto 30px;
-            max-width: 100vw;
-            max-height: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .wheel {
             width: 100%;
@@ -318,17 +320,17 @@
         }
         @media (max-width: 1200px) {
             .main-container { max-width: 98vw; padding: 10px; }
-            .wheel-container { width: 90vw; height: 90vw; max-width: 400px; max-height: 400px; }
+            .wheel-container { max-width: 90vw; }
         }
         @media (max-width: 992px) {
             .main-container { padding: 5px; }
-            .wheel-container { width: 80vw; height: 80vw; max-width: 350px; max-height: 350px; }
+            .wheel-container { max-width: 80vw; }
             .header h1 { font-size: 1.3rem; }
         }
         @media (max-width: 768px) {
             .row { flex-direction: column !important; }
             .col-lg-4, .col-lg-8, .col-md-4 { width: 100% !important; max-width: 100% !important; flex: 0 0 100% !important; }
-            .wheel-container { width: 95vw; height: 95vw; max-width: 300px; max-height: 300px; }
+            .wheel-container { max-width: 95vw; }
             .slot-reel { min-width: 80px; max-width: 120px; font-size: 1.1rem; height: 90px; }
             .btn, .btn-primary, .btn-success, .btn-danger, .btn-warning { font-size: 1rem; padding: 10px 0; }
             .card { margin-bottom: 18px; }
@@ -337,7 +339,7 @@
         }
         @media (max-width: 480px) {
             .main-container { padding: 2px; }
-            .wheel-container { width: 99vw; height: 99vw; max-width: 220px; max-height: 220px; }
+            .wheel-container { max-width: 99vw; }
             .slot-reel { min-width: 60px; max-width: 80px; font-size: 0.9rem; height: 60px; }
             .btn, .btn-primary, .btn-success, .btn-danger, .btn-warning { font-size: 0.95rem; padding: 8px 0; }
             .header h1 { font-size: 1rem; }
@@ -762,8 +764,8 @@ fetch('/ads/all/')
                 }
             }
             renderClassicWheel() {
-                // Responsive canvas size
-                const size = Math.min(this.wheelCanvas.parentElement.offsetWidth, 400);
+                const container = this.wheelCanvas.parentElement;
+                const size = Math.min(container.offsetWidth, container.offsetHeight || container.offsetWidth, 400);
                 this.wheelCanvas.width = this.wheelCanvas.height = size;
                 this.wheelCanvas.style.width = this.wheelCanvas.style.height = size + 'px';
                 this.wheelCanvas.style.display = 'block';
@@ -865,9 +867,8 @@ fetch('/ads/all/')
                 this.wheelCenter.style.display = 'block';
                 const n = this.names.length;
                 if (n === 0) return;
-                // Responsive size
                 const container = this.chipsWheel.parentElement;
-                const size = Math.min(container.offsetWidth, 400);
+                const size = Math.min(container.offsetWidth, container.offsetHeight || container.offsetWidth, 400);
                 const centerX = size/2, centerY = size/2;
                 const chipRadius = size * 0.18; // 18% of wheel size
                 const radius = size/2 - chipRadius;
