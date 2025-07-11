@@ -134,6 +134,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            min-width: 180px;
+            min-height: 180px;
+            height: auto;
+            background: transparent;
+        }
+        /* Remove padding for wheel card body */
+        .card-body.wheel-card-body {
+            padding: 0 !important;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         .wheel {
             width: 100%;
@@ -559,17 +572,19 @@
                         <i class="fas fa-circle-notch me-2"></i>Spin the Wheel
                     </div>
                     <div class="card-body text-center">
-                        <div class="wheel-container">
-                            <div class="wheel-pointer" id="wheelPointer"></div>
-                            <canvas id="wheelCanvas" width="400" height="400" style="display: none; border-radius: 50%; background: transparent;"></canvas>
-                            <div class="slot-machine" id="slotMachine" style="display: none;">
-                                <div class="slot-reel" id="slotReel1"></div>
-                                <div class="slot-reel" id="slotReel2"></div>
-                                <div class="slot-reel" id="slotReel3"></div>
-                            </div>
-                            <div class="chips-wheel" id="chipsWheel" style="display: none;"></div>
-                            <div class="wheel-center" id="wheelCenter">
-                                <i class="fas fa-star"></i>
+                        <div class="wheel-card-body card-body">
+                            <div class="wheel-container">
+                                <div class="wheel-pointer" id="wheelPointer"></div>
+                                <canvas id="wheelCanvas" width="400" height="400" style="display: none; border-radius: 50%; background: transparent;"></canvas>
+                                <div class="slot-machine" id="slotMachine" style="display: none;">
+                                    <div class="slot-reel" id="slotReel1"></div>
+                                    <div class="slot-reel" id="slotReel2"></div>
+                                    <div class="slot-reel" id="slotReel3"></div>
+                                </div>
+                                <div class="chips-wheel" id="chipsWheel" style="display: none;"></div>
+                                <div class="wheel-center" id="wheelCenter">
+                                    <i class="fas fa-star"></i>
+                                </div>
                             </div>
                         </div>
                         <div class="winner-display" id="winnerDisplay" style="display:none;">
@@ -764,8 +779,10 @@ fetch('/ads/all/')
                 }
             }
             renderClassicWheel() {
+                // Use the actual visible size of .wheel-container
                 const container = this.wheelCanvas.parentElement;
-                const size = Math.min(container.offsetWidth, container.offsetHeight || container.offsetWidth, 400);
+                const rect = container.getBoundingClientRect();
+                const size = Math.max(180, Math.min(rect.width, rect.height, 400));
                 this.wheelCanvas.width = this.wheelCanvas.height = size;
                 this.wheelCanvas.style.width = this.wheelCanvas.style.height = size + 'px';
                 this.wheelCanvas.style.display = 'block';
@@ -868,7 +885,8 @@ fetch('/ads/all/')
                 const n = this.names.length;
                 if (n === 0) return;
                 const container = this.chipsWheel.parentElement;
-                const size = Math.min(container.offsetWidth, container.offsetHeight || container.offsetWidth, 400);
+                const rect = container.getBoundingClientRect();
+                const size = Math.max(180, Math.min(rect.width, rect.height, 400));
                 const centerX = size/2, centerY = size/2;
                 const chipRadius = size * 0.18; // 18% of wheel size
                 const radius = size/2 - chipRadius;
