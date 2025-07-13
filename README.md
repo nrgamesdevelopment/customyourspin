@@ -75,7 +75,7 @@ This application addresses the issue where ads disappear after system sleep/rest
 3. **Deploy your application:**
    - Connect your GitHub repository to Render
    - Use the build script: `build.sh`
-   - Set the start command: `gunicorn backend.wsgi:application`
+   - Set the start command: `gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT`
 
 ### Option 2: Cloud Storage for Media Files
 
