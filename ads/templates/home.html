@@ -719,6 +719,16 @@ function fetchAds(retry = 0) {
     });
 }
 fetchAds();
+document.querySelectorAll('#ad-container-multi img').forEach(img => {
+  img.addEventListener('error', function retryImg() {
+    if (!img.dataset.retry) {
+      img.dataset.retry = '1';
+      setTimeout(() => {
+        img.src = img.src.split('?')[0] + '?retry=' + Date.now();
+      }, 3000); // retry after 3 seconds
+    }
+  });
+});
 </script>
     <script>
         // Static, client-side only version for Blogger
