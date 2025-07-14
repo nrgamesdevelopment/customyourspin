@@ -689,24 +689,36 @@
     }
     </style>
     <div style="text-align:center;font-size:1.3rem;font-weight:600;margin-top:24px;letter-spacing:1px;">Our Partners</div>
-    <div id="ad-container-multi"></div>
+    <div id="ad-container-multi"><div style="color:#fff;">Loading ads...</div></div>
     <script>
-fetch('/ads/all/')
-  .then(response => response.json())
-  .then(data => {
-    let debugNames = [];
-    if (data && data.ads && data.ads.length > 0) {
-      document.getElementById('ad-container-multi').innerHTML = data.ads.map(ad => {
-        debugNames.push(ad.ad_name);
-        return `<div class='ad-card'>
-          <a href="${ad.link}" target="_blank" rel="noopener">
-            <img src="${ad.image}" alt="${ad.ad_name}" />
-            <div class="ad-title">${ad.ad_name}</div>
-          </a>
-        </div>`;
-      }).join('');
-    }
-  });
+function fetchAds(retry = 0) {
+  fetch('/ads/all/')
+    .then(response => response.json())
+    .then(data => {
+      let debugNames = [];
+      if (data && data.ads && data.ads.length > 0) {
+        document.getElementById('ad-container-multi').innerHTML = data.ads.map(ad => {
+          debugNames.push(ad.ad_name);
+          return `<div class='ad-card'>
+            <a href="${ad.link}" target="_blank" rel="noopener">
+              <img src="${ad.image}" alt="${ad.ad_name}" onerror="this.onerror=null;this.src='/static/default_ad.png';" />
+              <div class="ad-title">${ad.ad_name}</div>
+            </a>
+          </div>`;
+        }).join('');
+      } else {
+        document.getElementById('ad-container-multi').innerHTML = '<div style="color:#fff;">No ads available.</div>';
+      }
+    })
+    .catch(err => {
+      if (retry < 3) {
+        setTimeout(() => fetchAds(retry + 1), 2000);
+      } else {
+        document.getElementById('ad-container-multi').innerHTML = '<div style="color:#fff;">Ads unavailable. Please refresh.</div>';
+      }
+    });
+}
+fetchAds();
 </script>
     <script>
         // Static, client-side only version for Blogger
