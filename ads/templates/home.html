@@ -514,6 +514,52 @@
         box-sizing: border-box;
       }
     </style>
+    <style>
+    .partners-section {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 40px 0;
+    }
+    .partner-frame {
+      background: rgba(255,255,255,0.12);
+      border-radius: 24px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      width: 340px;
+      height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 12px 12px 12px;
+      position: relative;
+      transition: transform 0.2s;
+    }
+    .partner-frame:hover {
+      transform: translateY(-6px) scale(1.03);
+    }
+    .partner-image {
+      width: 90%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .partner-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      text-shadow: 1px 1px 4px #764ba2;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 900px) {
+      .partners-section { flex-direction: column; gap: 24px; align-items: center; }
+      .partner-frame { width: 95vw; max-width: 340px; }
+    }
+    </style>
 </head>
 <body>
     <div class="main-container">
@@ -1251,5 +1297,59 @@ document.querySelectorAll('#ad-container-multi img').forEach(img => {
             new WheelApp();
         });
     </script>
+<!-- Footer Start -->
+<footer class="footer mt-auto py-4 bg-dark text-light" style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); border-top-left-radius: 24px; border-top-right-radius: 24px; box-shadow: 0 -2px 16px rgba(0,0,0,0.12); position: relative; z-index: 10;">
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+    <div class="mb-3 mb-md-0">
+      <a href="#" class="text-light text-decoration-none mx-2" onclick="showFooterPanel('privacy');return false;">Privacy Policy</a>
+      <span class="text-light">|</span>
+      <a href="#" class="text-light text-decoration-none mx-2" onclick="showFooterPanel('terms');return false;">Terms</a>
+      <span class="text-light">|</span>
+      <a href="#" class="text-light text-decoration-none mx-2" onclick="showFooterPanel('about');return false;">About Us</a>
+    </div>
+    <div class="mb-3 mb-md-0">
+      <a href="mailto:customyourwheel@gmail.com" class="text-light text-decoration-none mx-2">
+        <i class="fas fa-envelope me-1"></i> customyourwheel@gmail.com
+      </a>
+      <span class="text-light">|</span>
+      <a href="https://www.instagram.com/customyourspin?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="text-light text-decoration-none mx-2">
+        <i class="fab fa-instagram me-1"></i> @customyourspin
+      </a>
+    </div>
+    <div class="small text-light opacity-75 mt-2 mt-md-0">&copy; 2025 Custom Your Spin</div>
+  </div>
+</footer>
+<!-- Footer End -->
+
+<!-- Expanding Footer Panel -->
+<div id="footer-panel" style="display:none; position:fixed; left:0; right:0; bottom:0; background:rgba(34,34,34,0.98); color:#fff; z-index:9999; box-shadow:0 -4px 32px rgba(0,0,0,0.18); border-top-left-radius:24px; border-top-right-radius:24px; max-height:80vh; overflow-y:auto; transition:max-height 0.4s cubic-bezier(.4,2,.6,1);">
+  <div style="max-width:700px; margin:32px auto 0 auto; padding:32px 24px 24px 24px; position:relative;">
+    <button onclick="hideFooterPanel()" style="position:absolute; top:18px; right:18px; background:none; border:none; color:#fff; font-size:2rem; cursor:pointer; opacity:0.7;">&times;</button>
+    <div id="footer-panel-content"></div>
+  </div>
+</div>
+<script>
+function showFooterPanel(type) {
+  var panel = document.getElementById('footer-panel');
+  var content = document.getElementById('footer-panel-content');
+  var html = '';
+  if(type==='privacy') {
+    html = `<h3 style='font-weight:700;'>Privacy Policy</h3><p>Your privacy is important to us. <strong>Custom Your Spin</strong> does not collect or store any personal data from users. All wheel data and names are processed locally in your browser and are not shared with any third parties. We do not use cookies for tracking or advertising. For any privacy concerns, contact us at <a href='mailto:customyourwheel@gmail.com' class='text-light'>customyourwheel@gmail.com</a>.</p>`;
+  } else if(type==='terms') {
+    html = `<h3 style='font-weight:700;'>Terms & Conditions</h3><p>By using <strong>Custom Your Spin</strong>, you agree to use this site for lawful and personal purposes only. The site is provided as-is, without warranty of any kind. We are not responsible for any decisions or outcomes resulting from the use of the wheel. All content and features are for entertainment and educational use. For questions, contact <a href='mailto:customyourwheel@gmail.com' class='text-light'>customyourwheel@gmail.com</a>.</p>`;
+  } else if(type==='about') {
+    html = `<h3 style='font-weight:700;'>About Us</h3><p><strong>Custom Your Spin</strong> is a fun, interactive platform that lets you create and spin your own custom wheels for games, decisions, and more! Whether you're making party games, classroom activities, or just want to add excitement to your choices, our tool is designed for you. Enjoy a beautiful, modern interface and share the fun with friends!</p>`;
+  }
+  content.innerHTML = html;
+  panel.style.display = 'block';
+  setTimeout(function(){ panel.style.maxHeight = '80vh'; }, 10);
+  document.body.style.overflow = 'hidden';
+}
+function hideFooterPanel() {
+  var panel = document.getElementById('footer-panel');
+  panel.style.maxHeight = '0';
+  setTimeout(function(){ panel.style.display = 'none'; document.body.style.overflow = ''; }, 400);
+}
+</script>
 </body>
 </html>
