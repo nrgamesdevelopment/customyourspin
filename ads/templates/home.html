@@ -564,180 +564,185 @@
     </style>
 </head>
 <body>
-    <div class="main-container">
-        <div class="header">
-            <div class="site-logo">
-                <i class="fas fa-circle-notch"></i>
-                <span>Custom Your Wheel</span>
-            </div>
-            <p>Add names, choose a theme, and spin to find your winner!</p>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-plus-circle me-2"></i>Add Names
-                    </div>
-                    <div class="card-body">
-                        <form id="addNameForm">
-                            <div class="mb-3">
-                                <input type="text" class="form-control" id="nameInput" placeholder="Enter a name..." maxlength="50">
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">
-                                <i class="fas fa-plus me-2"></i>Add Name
-                            </button>
-                        </form>
-                        <div class="mt-3">
-                            <small class="text-muted">
-                                <i class="fas fa-info-circle me-1"></i>
-                                Maximum 20 names allowed
-                            </small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-palette me-2"></i>Wheel Theme
-                    </div>
-                    <div class="card-body">
-                        <select class="form-select" id="wheelStyle">
-                            <option value="classic">Classic Wheel</option>
-                            <option value="slot">Slot Machine</option>
-                            <option value="chips">Poker Chips</option>
-                            <option value="pizza">Food/Pizza Wheel</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fas fa-list me-2"></i>Names on Wheel
-                        <span class="badge bg-primary ms-2" id="nameCount">0</span>
-                    </div>
-                    <div class="card-body p-0">
-                        <div class="names-list" id="namesList">
-                            <div class="p-3 text-center text-muted">
-                                <i class="fas fa-info-circle me-2"></i>
-                                No names added yet
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fas fa-circle-notch me-2"></i>Spin the Wheel
-                    </div>
-                    <div class="card-body text-center">
-                        <div class="wheel-card-body card-body">
-                            <div class="wheel-container">
-                                <div class="wheel-pointer" id="wheelPointer"></div>
-                                <canvas id="wheelCanvas" width="400" height="400" style="display: none; border-radius: 50%; background: transparent;"></canvas>
-                                <div class="slot-machine" id="slotMachine" style="display: none;">
-                                    <div class="slot-reel" id="slotReel1"></div>
-                                    <div class="slot-reel" id="slotReel2"></div>
-                                    <div class="slot-reel" id="slotReel3"></div>
-                                </div>
-                                <div class="chips-wheel" id="chipsWheel" style="display: none;"></div>
-                                <div class="wheel-center" id="wheelCenter">
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="winner-display" id="winnerDisplay" style="display:none;">
-                            <i class="fas fa-trophy me-2"></i>
-                            <span id="winnerText"></span>
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col-md-4">
-                                <button class="btn btn-success w-100" id="spinBtn">
-                                    <i class="fas fa-play me-2"></i>Spin Wheel
-                                </button>
-                            </div>
-                            <div class="col-md-4">
-                                <button class="btn btn-warning w-100" id="removeWinnerBtn" style="display: none;">
-                                    <i class="fas fa-user-minus me-2"></i>Remove Winner
-                                </button>
-                            </div>
-                            <div class="col-md-4">
-                                <button class="btn btn-danger w-100" id="resetBtn">
-                                    <i class="fas fa-trash me-2"></i>Reset All
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="alertContainer" class="position-fixed top-0 end-0 p-3" style="z-index: 1050;"></div>
+    <!-- Add Navbar at the top -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="#home">Custom Your Wheel</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#blog">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About Us</a>
+        </li>
+      </ul>
     </div>
-    <!-- Ad Display (multiple ads, styled) -->
-    <style>
-    #ad-container-multi {
-      display: flex;
-      gap: 24px;
-      overflow-x: auto;
-      padding: 16px 0;
-      justify-content: center;
-    }
-    .ad-card {
-      display: inline-block;
-      background: rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 16px 12px 10px 12px;
-      min-width: 220px;
-      max-width: 220px;
-      text-align: center;
-      color: #222;
-      margin-bottom: 8px;
-      box-shadow: none;
-    }
-    .ad-card img {
-      max-width: 240px;
-      max-height: 160px;
-      width: auto;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      box-shadow: none;
-    }
-    .ad-card .ad-title {
-      font-weight: bold;
-      font-size: 1.25rem;
-      margin-bottom: 4px;
-      color: #fff;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
-    }
-    @media (max-width: 600px) {
-      .ad-card {
-        min-width: 90vw;
-        max-width: 95vw;
-        width: 90vw;
-        padding: 10px 4vw 8px 4vw;
-        margin-bottom: 16px;
-      }
-      .ad-card img {
-        max-width: 90vw;
-        max-height: 40vw;
-        width: 100%;
-        height: auto;
-      }
-      .ad-card .ad-title {
-        font-size: 1.1rem;
-      }
-      #ad-container-multi {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      body {
-        padding-left: 0;
-        padding-right: 0;
-      }
-    }
-    </style>
-    <div style="text-align:center;font-size:1.3rem;font-weight:600;margin-top:24px;letter-spacing:1px;">Our Partners</div>
-    <div id="ad-container-multi"><div style="color:#fff;">Loading ads...</div></div>
+  </div>
+</nav>
+
+<!-- Add IDs to main container for Home section -->
+<div class="main-container" id="home">
+    <div class="header">
+        <div class="site-logo">
+            <i class="fas fa-circle-notch"></i>
+            <span>Custom Your Wheel</span>
+        </div>
+        <p>Add names, choose a theme, and spin to find your winner!</p>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-plus-circle me-2"></i>Add Names
+                </div>
+                <div class="card-body">
+                    <form id="addNameForm">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="nameInput" placeholder="Enter a name..." maxlength="50">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-plus me-2"></i>Add Name
+                        </button>
+                    </form>
+                    <div class="mt-3">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Maximum 20 names allowed
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-palette me-2"></i>Wheel Theme
+                </div>
+                <div class="card-body">
+                    <select class="form-select" id="wheelStyle">
+                        <option value="classic">Classic Wheel</option>
+                        <option value="slot">Slot Machine</option>
+                        <option value="chips">Poker Chips</option>
+                        <option value="pizza">Food/Pizza Wheel</option>
+                    </select>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-list me-2"></i>Names on Wheel
+                    <span class="badge bg-primary ms-2" id="nameCount">0</span>
+                </div>
+                <div class="card-body p-0">
+                    <div class="names-list" id="namesList">
+                        <div class="p-3 text-center text-muted">
+                            <i class="fas fa-info-circle me-2"></i>
+                            No names added yet
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-circle-notch me-2"></i>Spin the Wheel
+                </div>
+                <div class="card-body text-center">
+                    <div class="wheel-card-body card-body">
+                        <div class="wheel-container">
+                            <div class="wheel-pointer" id="wheelPointer"></div>
+                            <canvas id="wheelCanvas" width="400" height="400" style="display: none; border-radius: 50%; background: transparent;"></canvas>
+                            <div class="slot-machine" id="slotMachine" style="display: none;">
+                                <div class="slot-reel" id="slotReel1"></div>
+                                <div class="slot-reel" id="slotReel2"></div>
+                                <div class="slot-reel" id="slotReel3"></div>
+                            </div>
+                            <div class="chips-wheel" id="chipsWheel" style="display: none;"></div>
+                            <div class="wheel-center" id="wheelCenter">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="winner-display" id="winnerDisplay" style="display:none;">
+                        <i class="fas fa-trophy me-2"></i>
+                        <span id="winnerText"></span>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <button class="btn btn-success w-100" id="spinBtn">
+                                <i class="fas fa-play me-2"></i>Spin Wheel
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-warning w-100" id="removeWinnerBtn" style="display: none;">
+                                <i class="fas fa-user-minus me-2"></i>Remove Winner
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-danger w-100" id="resetBtn">
+                                <i class="fas fa-trash me-2"></i>Reset All
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="alertContainer" class="position-fixed top-0 end-0 p-3" style="z-index: 1050;"></div>
+</div>
+<!-- Insert Blog Section after main content, before partners/ads -->
+<section id="blog" class="container my-5 py-5" style="background:rgba(255,255,255,0.07); border-radius:24px; box-shadow:0 2px 16px rgba(0,0,0,0.08);">
+  <h2 class="fw-bold mb-4 text-center" style="color:#ffe066;">Blog: The Ultimate Guide to Custom Spin Wheels Online</h2>
+  <article class="text-light" style="font-size:1.15rem;">
+    <p>Looking for the <strong>best online spinner tool</strong>? Welcome to <strong>Custom Your Wheel</strong> – your one-stop destination to <strong>make your own spin wheel</strong> online! Whether you want to <strong>create a custom spinner</strong> for giveaways, classroom fun, or party games, our <strong>interactive spin wheel</strong> and <strong>digital spin wheel maker</strong> have you covered.</p>
+    <ul>
+      <li><strong>Custom Spin Wheel Online</strong> – Design your own wheel in seconds.</li>
+      <li><strong>Online Spin the Wheel</strong> – Spin for fun, prizes, or decisions.</li>
+      <li><strong>Spin Wheel Generator</strong> – Instantly generate a random picker wheel.</li>
+      <li><strong>Free Online Spinner Tool</strong> – 100% free, no sign-up required.</li>
+      <li><strong>Wheel of Names Customizer</strong> – Add names, colors, and more.</li>
+      <li><strong>Custom Name Picker Wheel Spin Wheel for Giveaway</strong> – Perfect for raffles and giveaways.</li>
+      <li><strong>Decision Maker Wheel</strong> – Let the wheel decide for you!</li>
+      <li><strong>Prize Wheel Generator</strong> – Great for events and promotions.</li>
+      <li><strong>Classroom Spinner Tool</strong> – Teachers love our fun, colorful wheels.</li>
+      <li><strong>Birthday Game Spinner</strong> – Make birthdays extra special.</li>
+      <li><strong>Lucky Draw Wheel Online</strong> – Fair and random draws every time.</li>
+      <li><strong>Game Night Spin Wheel</strong> – Add excitement to your next game night.</li>
+      <li><strong>Spin the Wheel for Prizes</strong> – Engage your audience with a spin-to-win experience.</li>
+      <li><strong>Spin Wheel for Challenges</strong> – Spice up challenges and dares.</li>
+      <li><strong>Name Picker for Raffle Pizza Slice Spin Wheel</strong> – Unique pizza slice design for fun raffles.</li>
+      <li><strong>Slot Machine Spinner Online</strong> – Try our slot machine style spinner.</li>
+      <li><strong>Poker Chip Spin Game</strong> – Casino-style fun at your fingertips.</li>
+      <li><strong>Colorful Spin Wheel Generator</strong> – Bright, vibrant, and customizable.</li>
+      <li><strong>Fun Wheel Spinner for Kids</strong> – Safe and easy for children to use.</li>
+      <li><strong>Free Random Picker Tool</strong> – No cost, unlimited spins.</li>
+      <li><strong>Spin to Win Wheel Online</strong> – Boost engagement with spin-to-win.</li>
+      <li><strong>Giveaway Winner Picker</strong> – Effortlessly pick winners for your giveaways.</li>
+      <li><strong>Custom Fortune Wheel</strong> – Make your own fortune wheel for any occasion.</li>
+    </ul>
+    <p>Our <strong>interactive spin wheel</strong> is perfect for teachers, event organizers, streamers, and anyone who loves a bit of random fun. Try our <strong>digital spin wheel maker</strong> today and see why we’re the <strong>best online spinner tool</strong> for all your needs!</p>
+  </article>
+</section>
+
+<!-- Insert About Us Section after Blog -->
+<section id="about" class="container my-5 py-5" style="background:rgba(255,255,255,0.07); border-radius:24px; box-shadow:0 2px 16px rgba(0,0,0,0.08);">
+  <h2 class="fw-bold mb-4 text-center" style="color:#ffe066;">About Us</h2>
+  <div class="text-light" style="font-size:1.15rem; max-width:700px; margin:0 auto;">
+    <p><strong>Custom Your Spin</strong> is a fun, interactive platform that lets you create and spin your own custom wheels for games, decisions, and more! Whether you're making party games, classroom activities, or just want to add excitement to your choices, our tool is designed for you. Enjoy a beautiful, modern interface and share the fun with friends!</p>
+  </div>
+</section>
+
+<!-- Add smooth scrolling -->
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
     <script>
 function fetchAds(retry = 0) {
   fetch('/ads/all/')
