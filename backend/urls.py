@@ -19,19 +19,32 @@ from django.urls import path, include
 from ads.views import home
 from django.contrib.sitemaps.views import sitemap
 from ads.sitemaps import StaticViewSitemap
+from django.http import HttpResponse
+from django.conf import settings
+import os
 
 sitemaps = {
     'static': StaticViewSitemap,
 }
+
+def ads_txt(request):
+    """Serve the ads.txt file"""
+    ads_txt_path = os.path.join(settings.BASE_DIR, 'ads.txt')
+    try:
+        with open(ads_txt_path, 'r') as f:
+            content = f.read()
+        return HttpResponse(content, content_type='text/plain')
+    except FileNotFoundError:
+        return HttpResponse('File not found', status=404)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('ads/', include('ads.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('ads.txt', ads_txt, name='ads_txt'),
 ]
 
-from django.conf import settings
 from django.conf.urls.static import static
 
 if settings.DEBUG:
