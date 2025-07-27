@@ -1,0 +1,15 @@
+{
+    "name": "Custom Your Spin",
+    "short_name": "CustomSpin",
+    "description": "Create custom spin wheels for games, giveaways, and decisions",
+    "icons": [
+        {
+            "src": "/static/images/logo.PNG",
+            "sizes": "any",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#667eea",
+    "background_color": "#764ba2",
+    "display": "standalone"
+} 

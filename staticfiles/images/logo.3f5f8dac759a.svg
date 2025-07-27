@@ -1,0 +1,44 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wheelGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="centerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main wheel circle -->
+  <circle cx="30" cy="30" r="25" fill="url(#wheelGradient)" stroke="#fff" stroke-width="2"/>
+  
+  <!-- Wheel segments -->
+  <g transform="rotate(0, 30, 30)">
+    <path d="M 30 30 L 55 30 A 25 25 0 0 1 47.5 47.5 Z" fill="#e63946"/>
+    <path d="M 30 30 L 47.5 47.5 A 25 25 0 0 1 30 55 Z" fill="#ffe066"/>
+    <path d="M 30 30 L 30 55 A 25 25 0 0 1 12.5 47.5 Z" fill="#38b000"/>
+    <path d="M 30 30 L 12.5 47.5 A 25 25 0 0 1 5 30 Z" fill="#457b9d"/>
+    <path d="M 30 30 L 5 30 A 25 25 0 0 1 12.5 12.5 Z" fill="#8e44ad"/>
+    <path d="M 30 30 L 12.5 12.5 A 25 25 0 0 1 30 5 Z" fill="#ff8800"/>
+    <path d="M 30 30 L 30 5 A 25 25 0 0 1 47.5 12.5 Z" fill="#e63946"/>
+    <path d="M 30 30 L 47.5 12.5 A 25 25 0 0 1 55 30 Z" fill="#ffe066"/>
+  </g>
+  
+  <!-- Center circle -->
+  <circle cx="30" cy="30" r="8" fill="url(#centerGradient)" stroke="#fff" stroke-width="1"/>
+  
+  <!-- Pointer -->
+  <polygon points="30,5 25,15 35,15" fill="#f093fb" stroke="#fff" stroke-width="1"/>
+  
+  <!-- Spinning animation -->
+  <style>
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    g[transform*="rotate"] {
+      animation: spin 8s linear infinite;
+    }
+  </style>
+</svg> 

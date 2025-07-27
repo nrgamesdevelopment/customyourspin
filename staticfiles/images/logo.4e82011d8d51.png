@@ -1,0 +1,12 @@
+# Logo PNG File
+# 
+# This is a placeholder for your logo.png file.
+# 
+# To add your actual logo:
+# 1. Create or obtain your logo image (PNG format recommended)
+# 2. Save it as "logo.png" in this directory (static/images/)
+# 3. Recommended size: 60x60 pixels or larger (will be scaled down)
+# 4. Make sure it has a transparent background for best results
+# 
+# The template will automatically use this logo if it exists,
+# otherwise it will fall back to the SVG version or the Font Awesome icon. 
