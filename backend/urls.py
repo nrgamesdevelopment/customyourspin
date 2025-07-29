@@ -37,12 +37,23 @@ def ads_txt(request):
     except FileNotFoundError:
         return HttpResponse('File not found', status=404)
 
+def robots_txt(request):
+    """Serve the robots.txt file"""
+    robots_txt_path = os.path.join(settings.BASE_DIR, 'robots.txt')
+    try:
+        with open(robots_txt_path, 'r') as f:
+            content = f.read()
+        return HttpResponse(content, content_type='text/plain')
+    except FileNotFoundError:
+        return HttpResponse('User-agent: *\nAllow: /', content_type='text/plain')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('ads/', include('ads.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('ads.txt', ads_txt, name='ads_txt'),
+    path('robots.txt', robots_txt, name='robots_txt'),
 ]
 
 from django.conf.urls.static import static
