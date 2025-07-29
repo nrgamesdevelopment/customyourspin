@@ -24,5 +24,11 @@ Disallow: /admin/
 Allow: /static/
 Allow: /media/
 
+# Allow favicon files
+Allow: /static/images/favicon.ico
+Allow: /static/images/favicon-32x32.png
+Allow: /static/images/favicon.svg
+Allow: /static/images/site.webmanifest
+
 # Allow ads.txt
 Allow: /ads.txt
