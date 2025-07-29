@@ -4,13 +4,8 @@
     "description": "Create FREE custom spin wheels instantly! Perfect for giveaways, classroom games, TikTok challenges, and viral content. NO SIGN-UP REQUIRED!",
     "icons": [
         {
-            "src": "/static/images/favicon-32x32.png",
-            "sizes": "32x32",
-            "type": "image/png"
-        },
-        {
             "src": "/static/images/logo.PNG",
-            "sizes": "180x180",
+            "sizes": "32x32 180x180",
             "type": "image/png"
         }
     ],
