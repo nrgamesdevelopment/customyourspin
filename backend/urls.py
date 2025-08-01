@@ -18,13 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from ads.views import home
 from django.contrib.sitemaps.views import sitemap
-from ads.sitemaps import StaticViewSitemap
+from ads.sitemaps import StaticViewSitemap, BlogSitemap
 from django.http import HttpResponse
 from django.conf import settings
 import os
 
 sitemaps = {
     'static': StaticViewSitemap,
+    'blog': BlogSitemap,
 }
 
 def ads_txt(request):
