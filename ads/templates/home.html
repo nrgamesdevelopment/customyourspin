@@ -694,6 +694,9 @@
         <li class="nav-item">
           <a class="nav-link" href="#partners">🤝 Partners</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#multiplayer">🎮 Multiplayer</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -1143,6 +1146,143 @@
     <p>Our <strong>free online spinner tool</strong> provides the best <strong>random wheel generator</strong> experience with multiple themes including <strong>classic wheel spinner</strong>, <strong>pizza slice spin wheel</strong>, <strong>poker chip random generator</strong>, and <strong>slot machine wheel</strong> options. Perfect for creating <strong>name picker wheels</strong>, <strong>giveaway spin wheels</strong>, <strong>decision maker wheels</strong>, and <strong>Instagram Reels & YouTube Shorts challenges</strong> that go viral!</p>
     
     <p><strong>Join millions of users</strong> who trust Custom Your Spin for their <strong>random picker tool</strong> needs. From <strong>classroom teachers</strong> to <strong>Instagram Reels creators</strong>, from <strong>YouTube Shorts creators</strong> to <strong>event planners</strong> to <strong>gaming streamers</strong> - we're the go-to platform for creating engaging, fair, and fun spin wheels that capture attention and drive engagement.</p>
+  </div>
+</section>
+
+<!-- Multiplayer Room Section -->
+<section id="multiplayer" class="container my-5 py-5" style="background:rgba(255,255,255,0.07); border-radius:24px; box-shadow:0 2px 16px rgba(0,0,0,0.08);">
+  <h2 class="fw-bold mb-4 text-center" style="color:#ffe066;">🎮 Multiplayer Challenge Rooms</h2>
+  <p class="text-center text-light mb-4" style="font-size: 1.2rem;">Create or join a room with friends and spin challenges together!</p>
+  
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <!-- Room Creation/Joining Interface -->
+      <div class="card mb-4" style="background: rgba(255,255,255,0.95); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); border: none;">
+        <div class="card-header text-center" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border-radius: 20px 20px 0 0; padding: 25px;">
+          <h3 class="fw-bold mb-2">🎯 Create or Join a Challenge Room</h3>
+          <p class="mb-0">Play with 2-6 friends in real-time!</p>
+        </div>
+        <div class="card-body p-4">
+          <!-- Room Creation Form -->
+          <div id="createRoomSection">
+            <h5 class="text-primary mb-3">🏠 Create New Room</h5>
+            <form id="createRoomForm">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Room Name</label>
+                  <input type="text" class="form-control" id="roomName" placeholder="My Challenge Room" maxlength="50">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Max Players</label>
+                  <select class="form-select" id="maxPlayers">
+                    <option value="4">4 Players</option>
+                    <option value="5">5 Players</option>
+                    <option value="6" selected>6 Players</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Challenge Type</label>
+                  <select class="form-select" id="challengeType">
+                    <option value="truth-dare">Truth or Dare</option>
+                    <option value="this-that">This or That</option>
+                    <option value="workout">Workout Challenge</option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Wheel Theme</label>
+                  <select class="form-select" id="wheelTheme">
+                    <option value="classic">Classic Wheel</option>
+                    <option value="pizza">Pizza Wheel</option>
+                    <option value="slot">Slot Machine</option>
+                    <option value="chips">Poker Chips</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">
+                <i class="fas fa-plus me-2"></i>Create Room
+              </button>
+            </form>
+          </div>
+          
+          <hr class="my-4">
+          
+          <!-- Room Joining Form -->
+          <div id="joinRoomSection">
+            <h5 class="text-success mb-3">🚪 Join Existing Room</h5>
+            <form id="joinRoomForm">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Room Code</label>
+                  <input type="text" class="form-control" id="roomCode" placeholder="ABC123" maxlength="6" style="text-transform: uppercase;">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Your Name</label>
+                  <input type="text" class="form-control" id="playerName" placeholder="Enter your name" maxlength="30">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success w-100">
+                <i class="fas fa-sign-in-alt me-2"></i>Join Room
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Active Room Display -->
+      <div id="activeRoomSection" style="display: none;">
+        <div class="card" style="background: rgba(255,255,255,0.95); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); border: none;">
+          <div class="card-header text-center" style="background: linear-gradient(135deg, #10b981, #059669); color: white; border-radius: 20px 20px 0 0; padding: 25px;">
+            <h3 class="fw-bold mb-2">🎮 Active Room: <span id="activeRoomCode"></span></h3>
+            <p class="mb-0">Players: <span id="playerCount">0</span>/<span id="maxPlayerCount">6</span></p>
+          </div>
+          <div class="card-body p-4">
+            <!-- Players List -->
+            <div class="mb-4">
+              <h5 class="text-primary mb-3">👥 Players in Room</h5>
+              <div id="playersList" class="row">
+                <!-- Players will be populated here -->
+              </div>
+            </div>
+            
+            <!-- Challenge Display -->
+            <div class="mb-4">
+              <h5 class="text-warning mb-3">🎯 Current Challenge</h5>
+              <div id="currentChallenge" class="alert alert-warning text-center" style="display: none;">
+                <h4 id="challengeText"></h4>
+                <small class="text-muted">Assigned to: <span id="challengePlayer"></span></small>
+              </div>
+            </div>
+            
+            <!-- Room Actions -->
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                <button class="btn btn-warning w-100" id="spinChallengeBtn">
+                  <i class="fas fa-play me-2"></i>Spin Challenge
+                </button>
+              </div>
+              <div class="col-md-6 mb-2">
+                <button class="btn btn-danger w-100" id="leaveRoomBtn">
+                  <i class="fas fa-sign-out-alt me-2"></i>Leave Room
+                </button>
+              </div>
+            </div>
+            
+            <!-- Share Room Code -->
+            <div class="mt-3 text-center">
+              <p class="text-muted mb-2">Share this room code with friends:</p>
+              <div class="input-group">
+                <input type="text" class="form-control text-center fw-bold" id="shareRoomCode" readonly style="font-size: 1.5rem; letter-spacing: 2px;">
+                <button class="btn btn-outline-primary" id="copyRoomCodeBtn">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1802,8 +1942,328 @@ document.querySelectorAll('#ad-container-multi img').forEach(img => {
             }
         }
 
+        // Multiplayer Room System
+        class MultiplayerRoom {
+            constructor() {
+                this.currentRoom = null;
+                this.playerId = this.generatePlayerId();
+                this.roomCheckInterval = null;
+                this.initializeElements();
+                this.bindEvents();
+            }
+            
+            generatePlayerId() {
+                return 'player_' + Math.random().toString(36).substr(2, 9);
+            }
+            
+            initializeElements() {
+                this.createRoomForm = document.getElementById('createRoomForm');
+                this.joinRoomForm = document.getElementById('joinRoomForm');
+                this.activeRoomSection = document.getElementById('activeRoomSection');
+                this.createRoomSection = document.getElementById('createRoomSection');
+                this.joinRoomSection = document.getElementById('joinRoomSection');
+                this.spinChallengeBtn = document.getElementById('spinChallengeBtn');
+                this.leaveRoomBtn = document.getElementById('leaveRoomBtn');
+                this.copyRoomCodeBtn = document.getElementById('copyRoomCodeBtn');
+            }
+            
+            bindEvents() {
+                this.createRoomForm.addEventListener('submit', (e) => this.handleCreateRoom(e));
+                this.joinRoomForm.addEventListener('submit', (e) => this.handleJoinRoom(e));
+                this.spinChallengeBtn.addEventListener('click', () => this.handleSpinChallenge());
+                this.leaveRoomBtn.addEventListener('click', () => this.handleLeaveRoom());
+                this.copyRoomCodeBtn.addEventListener('click', () => this.copyRoomCode());
+                
+                // Auto-uppercase room code input
+                document.getElementById('roomCode').addEventListener('input', (e) => {
+                    e.target.value = e.target.value.toUpperCase();
+                });
+            }
+            
+            async handleCreateRoom(e) {
+                e.preventDefault();
+                
+                const roomName = document.getElementById('roomName').value || 'My Challenge Room';
+                const maxPlayers = parseInt(document.getElementById('maxPlayers').value);
+                const challengeType = document.getElementById('challengeType').value;
+                const wheelTheme = document.getElementById('wheelTheme').value;
+                
+                try {
+                    const response = await fetch('/ads/room/create/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            name: roomName,
+                            max_players: maxPlayers,
+                            challenge_type: challengeType,
+                            wheel_theme: wheelTheme
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.currentRoom = {
+                            code: data.room_code,
+                            id: data.room_id,
+                            playerId: this.playerId
+                        };
+                        
+                        // Auto-join the created room
+                        await this.joinCreatedRoom(roomName);
+                        this.showAlert(data.message, 'success');
+                    } else {
+                        this.showAlert(data.message, 'danger');
+                    }
+                } catch (error) {
+                    this.showAlert('Error creating room. Please try again.', 'danger');
+                }
+            }
+            
+            async joinCreatedRoom(playerName) {
+                try {
+                    const response = await fetch('/ads/room/join/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            room_code: this.currentRoom.code,
+                            player_name: playerName,
+                            player_id: this.currentRoom.playerId
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.showActiveRoom();
+                        this.startRoomPolling();
+                    }
+                } catch (error) {
+                    console.error('Error joining room:', error);
+                }
+            }
+            
+            async handleJoinRoom(e) {
+                e.preventDefault();
+                
+                const roomCode = document.getElementById('roomCode').value.trim().toUpperCase();
+                const playerName = document.getElementById('playerName').value.trim();
+                
+                if (!roomCode || !playerName) {
+                    this.showAlert('Please enter both room code and your name.', 'warning');
+                    return;
+                }
+                
+                try {
+                    const response = await fetch('/ads/room/join/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            room_code: roomCode,
+                            player_name: playerName,
+                            player_id: this.playerId
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.currentRoom = {
+                            code: data.room_code,
+                            id: data.room_id,
+                            playerId: data.player_id
+                        };
+                        
+                        this.showActiveRoom();
+                        this.startRoomPolling();
+                        this.showAlert(data.message, 'success');
+                    } else {
+                        this.showAlert(data.message, 'danger');
+                    }
+                } catch (error) {
+                    this.showAlert('Error joining room. Please try again.', 'danger');
+                }
+            }
+            
+            showActiveRoom() {
+                this.createRoomSection.style.display = 'none';
+                this.joinRoomSection.style.display = 'none';
+                this.activeRoomSection.style.display = 'block';
+                
+                document.getElementById('activeRoomCode').textContent = this.currentRoom.code;
+                document.getElementById('shareRoomCode').value = this.currentRoom.code;
+                
+                this.updateRoomStatus();
+            }
+            
+            async updateRoomStatus() {
+                if (!this.currentRoom) return;
+                
+                try {
+                    const response = await fetch(`/ads/room/${this.currentRoom.code}/status/`);
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        document.getElementById('playerCount').textContent = data.room.current_players;
+                        document.getElementById('maxPlayerCount').textContent = data.room.max_players;
+                        
+                        this.updatePlayersList(data.players);
+                    }
+                } catch (error) {
+                    console.error('Error updating room status:', error);
+                }
+            }
+            
+            updatePlayersList(players) {
+                const playersList = document.getElementById('playersList');
+                playersList.innerHTML = '';
+                
+                players.forEach(player => {
+                    const playerCard = document.createElement('div');
+                    playerCard.className = 'col-md-6 col-lg-4 mb-2';
+                    playerCard.innerHTML = `
+                        <div class="card p-2 text-center ${player.id === this.currentRoom.playerId ? 'border-primary' : ''}">
+                            <div class="card-body p-2">
+                                <h6 class="card-title mb-1">${player.name}</h6>
+                                <small class="text-muted">${player.is_ready ? '✅ Ready' : '⏳ Waiting'}</small>
+                            </div>
+                        </div>
+                    `;
+                    playersList.appendChild(playerCard);
+                });
+            }
+            
+            async handleSpinChallenge() {
+                if (!this.currentRoom) return;
+                
+                try {
+                    const response = await fetch(`/ads/room/${this.currentRoom.code}/spin/`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            player_id: this.currentRoom.playerId
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.showChallenge(data.challenge, data.player_name);
+                        this.showAlert(`Challenge assigned to ${data.player_name}!`, 'info');
+                    } else {
+                        this.showAlert(data.message, 'danger');
+                    }
+                } catch (error) {
+                    this.showAlert('Error spinning challenge. Please try again.', 'danger');
+                }
+            }
+            
+            showChallenge(challenge, playerName) {
+                const challengeDiv = document.getElementById('currentChallenge');
+                document.getElementById('challengeText').textContent = challenge;
+                document.getElementById('challengePlayer').textContent = playerName;
+                challengeDiv.style.display = 'block';
+                
+                // Scroll to challenge
+                challengeDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
+            async handleLeaveRoom() {
+                if (!this.currentRoom) return;
+                
+                if (!confirm('Are you sure you want to leave the room?')) return;
+                
+                try {
+                    const response = await fetch(`/ads/room/${this.currentRoom.code}/leave/`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            player_id: this.currentRoom.playerId
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.leaveRoom();
+                        this.showAlert(data.message, 'success');
+                    } else {
+                        this.showAlert(data.message, 'danger');
+                    }
+                } catch (error) {
+                    this.showAlert('Error leaving room. Please try again.', 'danger');
+                }
+            }
+            
+            leaveRoom() {
+                this.currentRoom = null;
+                this.stopRoomPolling();
+                
+                this.createRoomSection.style.display = 'block';
+                this.joinRoomSection.style.display = 'block';
+                this.activeRoomSection.style.display = 'none';
+                
+                // Clear forms
+                document.getElementById('createRoomForm').reset();
+                document.getElementById('joinRoomForm').reset();
+            }
+            
+            copyRoomCode() {
+                const roomCodeInput = document.getElementById('shareRoomCode');
+                roomCodeInput.select();
+                roomCodeInput.setSelectionRange(0, 99999); // For mobile devices
+                
+                try {
+                    document.execCommand('copy');
+                    this.showAlert('Room code copied to clipboard!', 'success');
+                } catch (err) {
+                    this.showAlert('Failed to copy room code', 'danger');
+                }
+            }
+            
+            startRoomPolling() {
+                this.stopRoomPolling();
+                this.roomCheckInterval = setInterval(() => {
+                    this.updateRoomStatus();
+                }, 3000); // Check every 3 seconds
+            }
+            
+            stopRoomPolling() {
+                if (this.roomCheckInterval) {
+                    clearInterval(this.roomCheckInterval);
+                    this.roomCheckInterval = null;
+                }
+            }
+            
+            showAlert(message, type) {
+                const alertDiv = document.createElement('div');
+                alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+                alertDiv.innerHTML = `
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                document.getElementById('alertContainer').appendChild(alertDiv);
+                setTimeout(() => {
+                    if (alertDiv.parentNode) {
+                        alertDiv.remove();
+                    }
+                }, 5000);
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             window.wheelApp = new WheelApp();
+            window.multiplayerRoom = new MultiplayerRoom();
         });
     </script>
 <!-- Footer Start -->
