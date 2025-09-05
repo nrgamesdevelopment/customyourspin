@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<article class="post">
+  <h1>{{ article.title }}</h1>
+  <p class="tag">SEO</p>
+  <p>Interactive tools increase dwell time and repeat visits. When people create and share wheels, they naturally generate fresh content and backlinks—great signals for search engines.</p>
+  <img src="{% static 'images/blog/wheel-placeholder-fixed.svg' %}" alt="Custom wheel for SEO" class="blog-image">
+</article>
+{% endblock %}
+

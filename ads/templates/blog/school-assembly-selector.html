@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<article class="post">
+  <h1>{{ article.title }}</h1>
+  <p class="tag">Education</p>
+  <p>Pick performers, topics, or house duties at school assemblies with a fair spin. Display on the projector for excitement and clarity.</p>
+  <img src="{% static 'images/blog/classroom-wheel-fixed.svg' %}" alt="Custom wheel for Education" class="blog-image">
+</article>
+{% endblock %}
+

@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<article class="post">
+  <h2>Latest Guides and Ideas</h2>
+  <p>Explore ways to use our free spin wheel generator for classrooms, creators, giveaways and more. Every article is written to be helpful, original, and ad‑friendly.</p>
+  <hr>
+  <ul>
+    {% for a in articles %}
+      <li style="margin:.6rem 0">
+        <a href="/ads/blog/{{ a.slug }}/"><strong>{{ a.title }}</strong></a>
+        <br><small>{{ a.description }}</small>
+      </li>
+    {% endfor %}
+  </ul>
+</article>
+{% endblock %}

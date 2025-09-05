@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="200" cy="200" r="180" fill="#f5f5f5" stroke="#ddd" stroke-width="2"/>
+  <circle cx="200" cy="200" r="160" fill="#fff" stroke="#eee" stroke-width="1"/>
+  
+  <!-- Wheel sections -->
+  <path d="M200,200 L350,125 A180,180 0 0,0 275,50 Z" fill="#FF9AA2"/>
+  <path d="M200,200 L275,50 A180,180 0 0,0 125,50 Z" fill="#FFB7B2"/>
+  <path d="M200,200 L125,50 A180,180 0 0,0 50,125 Z" fill="#FFDAC1"/>
+  <path d="M200,200 L50,125 A180,180 0 0,0 50,275 Z" fill="#E2F0CB"/>
+  <path d="M200,200 L50,275 A180,180 0 0,0 125,350 Z" fill="#B5EAD7"/>
+  <path d="M200,200 L125,350 A180,180 0 0,0 275,350 Z" fill="#C7CEEA"/>
+  <path d="M200,200 L275,350 A180,180 0 0,0 350,275 Z" fill="#D4A5A5"/>
+  <path d="M200,200 L350,275 A180,180 0 0,0 350,125 Z" fill="#F0E5D8"/>
+  
+  <!-- Text on wheel sections - properly aligned -->
+  <text x="300" y="120" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Math</text>
+  <text x="240" y="80" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Science</text>
+  <text x="160" y="80" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">English</text>
+  <text x="100" y="120" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">History</text>
+  <text x="100" y="280" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Art</text>
+  <text x="160" y="320" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Music</text>
+  <text x="240" y="320" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">PE</text>
+  <text x="300" y="280" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Break</text>
+  
+  <!-- Center circle -->
+  <circle cx="200" cy="200" r="40" fill="#fff" stroke="#ddd" stroke-width="2"/>
+  <text x="200" y="205" font-family="Arial" font-size="14" text-anchor="middle" fill="#555">CLASS</text>
+  
+  <!-- Pointer -->
+  <polygon points="200,120 210,160 190,160" fill="#555"/>
+</svg>

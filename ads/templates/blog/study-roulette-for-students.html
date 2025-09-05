@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<article class="post">
+  <h1>{{ article.title }}</h1>
+  <p class="tag">Students</p>
+  <p>Turn revision into a quick game. Add chapters or question types to the wheel. Spin to decide what to attempt next, then set a timer. It reduces decision fatigue and keeps momentum high.</p>
+  <img src="{% static 'images/blog/wheel-placeholder-fixed.svg' %}" alt="Custom wheel for Students" class="blog-image">
+</article>
+{% endblock %}
+

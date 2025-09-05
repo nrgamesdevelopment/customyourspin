@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<article class="post">
+  <h1>{{ article.title }}</h1>
+  <p class="tag">Trust</p>
+  <p>We don’t require sign‑ups to spin a wheel. Avoid entering personal or sensitive data into items, and prefer first names or nicknames in public videos.</p>
+  <img src="{% static 'images/blog/wheel-placeholder-fixed.svg' %}" alt="Custom wheel for Trust" class="blog-image">
+</article>
+{% endblock %}
+

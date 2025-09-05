@@ -1,0 +1,62 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<article class="post">
+  <h1>{{ article.title }}</h1>
+  <p class="tag">Templates</p>
+  
+  <p>Transform your next gathering with our Truth or Dare wheel template, designed to streamline setup while maximizing fun. Begin with our carefully curated starter template, then customize the prompts to perfectly match your group's dynamics, age range, and comfort level. Whether you're hosting a family-friendly game night, a teenage sleepover, or an adult party, our adaptable template ensures appropriate content while maintaining an ad-safe experience that everyone can enjoy.</p>
+  
+  <img src="{% static 'images/blog/wheel-placeholder-fixed.svg' %}" alt="Custom wheel for Templates" class="blog-image">
+  
+  <h3>The Psychology Behind Truth or Dare</h3>
+  <p>Truth or Dare has endured as a popular party game for generations because it taps into fundamental social dynamics. The game creates a structured environment for self-disclosure and mild risk-taking, two elements that social psychologists identify as crucial for building group cohesion and deepening relationships. By alternating between revealing personal information (truth) and performing actions outside one's comfort zone (dare), participants experience accelerated bonding through shared vulnerability.</p>
+  
+  <p>The wheel format adds an element of randomization that enhances the game's appeal. When a neutral spinning wheel determines who will participate next, it removes any perception of targeting or favoritism, creating a more equitable playing field. This random selection process also builds anticipation and engagement, as everyone watches to see where the wheel will stop.</p>
+  
+  <h3>Customizing Your Truth or Dare Wheel</h3>
+  <p>Our template provides an excellent starting point, but the real magic happens when you tailor the content to your specific group. Consider these factors when customizing your wheel:</p>
+  
+  <ul>
+    <li><strong>Age appropriateness:</strong> Create separate wheels for different age groups, ensuring content remains suitable. For children, focus on silly actions and light-hearted questions. For teens, incorporate more social dynamics and mild challenges. Adult wheels can include more personal questions and sophisticated dares.</li>
+    <li><strong>Group familiarity:</strong> Adjust question depth based on how well participants know each other. New acquaintances might prefer lighter truths, while long-time friends can handle more revealing questions.</li>
+    <li><strong>Cultural sensitivity:</strong> Ensure all prompts respect the cultural backgrounds and personal boundaries of all participants. Avoid questions or dares that might make someone uncomfortable due to their cultural or religious practices.</li>
+    <li><strong>Physical considerations:</strong> Make sure physical dares accommodate all participants' abilities. Include alternatives for those who might have mobility limitations or other physical constraints.</li>
+    <li><strong>Setting appropriateness:</strong> Tailor dares to your physical environment. Indoor gatherings require different challenges than outdoor events, and public venues need more subdued activities than private homes.</li>
+  </ul>
+  
+  <h3>Truth Question Categories</h3>
+  <p>Effective truth questions create engagement without crossing personal boundaries. Consider organizing your truths into these categories:</p>
+  
+  <ul>
+    <li><strong>Preferences and opinions:</strong> "What's your unpopular food opinion?" or "Which movie could you watch endlessly without getting bored?"</li>
+    <li><strong>Hypothetical scenarios:</strong> "If you could have dinner with any historical figure, who would you choose and why?" or "What would you do first if you won a million dollars?"</li>
+    <li><strong>Childhood memories:</strong> "What was your most embarrassing moment in school?" or "What's the strangest thing you believed as a child?"</li>
+    <li><strong>Future aspirations:</strong> "What's one goal you hope to accomplish in the next five years?" or "Where do you see yourself living in the future?"</li>
+    <li><strong>Light confessions:</strong> "What's a small rule you break regularly?" or "What's something you pretended to understand but actually didn't?"</li>
+  </ul>
+  
+  <h3>Dare Challenge Categories</h3>
+  <p>Effective dares create memorable moments without humiliation. Consider these categories when building your dare section:</p>
+  
+  <ul>
+    <li><strong>Creative expression:</strong> "Draw a portrait of the person across from you without looking at the paper" or "Make up a short jingle about the person to your right."</li>
+    <li><strong>Physical comedy:</strong> "Imitate an animal of the group's choosing for 30 seconds" or "Do your best dance move right now."</li>
+    <li><strong>Social challenges:</strong> "Text the 10th person in your contacts list and ask them a funny question" or "Call someone in the room and try to convince them to order pizza."</li>
+    <li><strong>Skill demonstrations:</strong> "Balance three objects on your head for 10 seconds" or "Recite the alphabet backwards as quickly as possible."</li>
+    <li><strong>Role playing:</strong> "Pretend to be a news anchor reporting on this party" or "Act out a scene from a famous movie and have others guess it."</li>
+  </ul>
+  
+  <h3>Implementation Tips for Maximum Engagement</h3>
+  <p>To ensure your Truth or Dare wheel creates a positive experience, establish clear ground rules before beginning. Give participants a limited number of "passes" they can use if they're truly uncomfortable with a prompt. This safety valve helps everyone feel secure while discouraging overuse.</p>
+  
+  <p>Consider creating a tiered wheel system where players first spin to determine "truth" or "dare," then spin a second wheel specific to their category. This approach allows for more variety in prompts and keeps the game fresh for longer periods.</p>
+  
+  <p>For virtual gatherings, adapt dares to work through video calls—challenges like "Find something blue in your house within 30 seconds" or "Create a hat using only materials within arm's reach." These adaptations maintain the spirit of the game while accommodating remote participation.</p>
+  
+  <h3>Keeping Content Appropriate</h3>
+  <p>While Truth or Dare traditionally includes provocative elements, our template emphasizes fun over embarrassment. Focus on prompts that create laughter and bonding rather than discomfort or regret. This approach ensures the game remains enjoyable for everyone and creates positive memories rather than awkward moments.</p>
+  
+  <p>By starting with our template and thoughtfully customizing it for your specific group, you'll create a Truth or Dare experience that generates exactly the right balance of revelation, challenge, and entertainment. The spinning wheel format adds an element of chance that keeps everyone engaged and creates a fair, dynamic game flow that can be enjoyed again and again with different results each time.</p>
+</article>
+{% endblock %}

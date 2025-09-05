@@ -1,0 +1,48 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<article class="post">
+  <h1>{{ article.title }}</h1>
+  <p class="tag">Accessibility</p>
+  
+  <p>At Custom Your Spin, we believe that interactive tools should be accessible to everyone, regardless of ability or technology constraints. Our wheel generator has been thoughtfully designed with accessibility as a core principle rather than an afterthought. The interface features large, easily clickable buttons, high-contrast color schemes, and clear typography that ensures readability across various screen sizes and lighting conditions. Keyboard users can navigate the entire interface using tab navigation, focus the Spin button with clear visual indicators, and activate it using standard keyboard commands, ensuring that motor limitations never prevent full participation.</p>
+  
+  <p>We continuously refine our accessibility features based on user feedback and evolving standards, implementing improvements that benefit all users while specifically addressing barriers that might affect those with visual, motor, or cognitive disabilities. Our commitment extends beyond compliance with technical standards to creating a genuinely inclusive experience where everyone can create, customize, and enjoy interactive wheels without encountering unnecessary obstacles or frustrations.</p>
+  
+  <img src="{% static 'images/blog/wheel-placeholder-fixed.svg' %}" alt="Custom wheel for Accessibility" class="blog-image">
+  
+  <h3>Visual Accessibility Enhancements</h3>
+  <p>Visual accessibility begins with thoughtful color choices that maintain sufficient contrast ratios between text and background elements. Our interface avoids problematic color combinations that might be difficult for users with color vision deficiencies to distinguish. All informational and functional elements convey their meaning through multiple cues beyond color alone, ensuring that color-blind users never miss critical information. Text sizing follows responsive design principles, allowing content to scale appropriately across devices while maintaining readability.</p>
+  
+  <p>For users with more significant visual impairments, we've ensured compatibility with screen readers by implementing proper semantic HTML structure and ARIA attributes where necessary. All images include descriptive alt text, and interactive elements are properly labeled to communicate their purpose and state. The wheel itself, while inherently visual, provides audio feedback upon spinning and stopping, creating a multi-sensory experience that doesn't rely exclusively on visual perception.</p>
+  
+  <h3>Motor and Interaction Accessibility</h3>
+  <p>Our approach to motor accessibility focuses on removing barriers for users with limited dexterity, tremors, or those using alternative input devices. Consider these specific implementations:</p>
+  
+  <ul>
+    <li><strong>Generous target sizes:</strong> All clickable elements exceed minimum size recommendations, reducing the precision required for successful interaction and minimizing accidental activations.</li>
+    <li><strong>Keyboard navigation:</strong> Complete keyboard accessibility ensures users can tab through all interactive elements in a logical sequence, with visible focus indicators at each step.</li>
+    <li><strong>Reduced motion options:</strong> For users sensitive to motion or animations, we provide settings to reduce or eliminate non-essential movements while preserving core functionality.</li>
+    <li><strong>Touch optimization:</strong> Touch targets are spaced appropriately to prevent accidental activations on mobile devices, with additional considerations for users who might experience tremors.</li>
+    <li><strong>Input flexibility:</strong> Multiple input methods achieve the same results, allowing users to interact in whatever way best suits their abilities and preferences.</li>
+  </ul>
+  
+  <h3>Cognitive Accessibility Considerations</h3>
+  <p>Cognitive accessibility requires clear, consistent, and predictable interfaces that minimize cognitive load. Our wheel generator employs straightforward language that avoids technical jargon and complex instructions. The interface maintains consistent positioning of elements across different screens and functions, reducing the learning curve and memory demands. Error messages are constructive and specific, clearly explaining what went wrong and how to fix it without using technical terminology that might confuse users.</p>
+  
+  <p>We've implemented a progressive disclosure approach to complex features, presenting basic functionality upfront while allowing users to discover advanced options as needed. This prevents overwhelming new users while still providing power users with the customization they desire. Instructions and help content are available in multiple formats—text, icons, and tooltips—accommodating different learning preferences and comprehension levels.</p>
+  
+  <h3>Technical Implementation and Standards Compliance</h3>
+  <p>Our accessibility features are built on a foundation of technical standards compliance, including WCAG 2.1 guidelines. The responsive design adapts gracefully across screen sizes from small mobile devices to large desktop displays, maintaining usability and readability throughout. We regularly test with automated accessibility tools and conduct manual audits using screen readers and keyboard-only navigation to identify and address potential barriers.</p>
+  
+  <p>The codebase employs semantic HTML elements that clearly communicate content structure to assistive technologies. ARIA attributes supplement HTML semantics where necessary to ensure that dynamic content changes are properly announced to screen reader users. All form elements are properly labeled and associated with their instructions, error messages, and related content.</p>
+  
+  <h3>Ongoing Accessibility Improvements</h3>
+  <p>Accessibility is not a one-time implementation but an ongoing commitment. We actively solicit feedback from users with disabilities and incorporate their suggestions into our development roadmap. Regular accessibility audits identify areas for improvement, and we prioritize fixing accessibility issues alongside other feature development.</p>
+  
+  <p>Our team stays informed about evolving accessibility standards and emerging best practices, implementing new approaches as they become available. We recognize that different disabilities require different accommodations, and we strive to create an experience that adapts to individual needs rather than assuming a one-size-fits-all solution.</p>
+  
+  <p>By prioritizing accessibility in our design and development process, we ensure that Custom Your Spin's wheel generator provides an inclusive, enjoyable experience for all users. Whether you're using a screen reader, navigating by keyboard, or requiring high contrast visuals, our commitment is to remove barriers and create a tool that everyone can use with independence and dignity.</p>
+</article>
+{% endblock %}
+

@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<article class="post">
+  <h1>{{ article.title }}</h1>
+  <p class="tag">Streaming</p>
+  <p>Use the wheel as a viewer engagement tool on YouTube or Twitch. Add challenges, redeemable rewards, or game modifiers. Screen‑capture the wheel window inside your streaming software.</p>
+  <img src="{% static 'images/blog/wheel-placeholder-fixed.svg' %}" alt="Custom wheel for Streaming" class="blog-image">
+</article>
+{% endblock %}
+
