@@ -123,3 +123,10 @@ def blog_article(request, slug: str):
 def test_static(request):
     """Test view to check if static files are being served correctly"""
     return render(request, 'test_static.html')
+
+# -------- Legal & Contact --------
+def terms(request):
+    return render(request, 'terms.html')
+
+def contact(request):
+    return render(request, 'contact.html')
